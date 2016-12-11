@@ -35,4 +35,21 @@ export class GithubUsers {
       .map(res => <User[]>(res.json().items))
   }
 
+  // Search for github users  
+  getLatLang(indirizzo): Observable<any> {
+    return this.http.get(`http://maps.google.com/maps/api/geocode/json?address=`+indirizzo) 
+      .map(res => <any>(res.json()))
+  }
+
+  // Search for github users  
+  getDistanza(partenza, arrivo): Observable<any> {
+    return this.http.get('https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins='+partenza+',+Roma&destinations='+arrivo+'&key=AIzaSyC9IJh8rT6Xawb_tA8KMsC5W7nvq8ElOG0') 
+      .map(res => <any>(res.json()))
+  }
+
+  getAddress(latitudine, longitudine): Observable<any> {
+    return this.http.get('http://maps.googleapis.com/maps/api/geocode/json?latlng='+latitudine+','+longitudine+'&sensor=false') 
+      .map(res => <any>(res.json()))
+  }
+
 }

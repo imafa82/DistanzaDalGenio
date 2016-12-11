@@ -4,20 +4,17 @@
       <ion-icon name="menu"></ion-icon> 
     </button>
     <ion-title>
-      Users
+      Distanza dal genio
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-<ion-searchbar (input)="search($event)"></ion-searchbar>
-  <ion-list>
-    <button ion-item *ngFor="let user of users" (click)="goToDetails(user.login)">
-      <ion-avatar item-left>
-        <img [src]="user.avatar_url">
-      </ion-avatar>
-      <h2>{{ user.login }}</h2>
-      <ion-icon name="arrow-forward" item-right></ion-icon>
-    </button>
-  </ion-list>
+    <div>
+      <h1>Distanza dal Genio</h1>
+      <p *ngIf=partenza>Il tuo indirizzo è {{partenza.indirizzo}}</p>
+      <p *ngIf=arrivo>L'indirizzo del genio è {{arrivo.indirizzo}}</p>
+      <p> Disti da casa del Genio {{distanzaMiglia}} ci puoi arrivare in {{tempo}}</p>
+    </div>
+    <div id="map_canvas"></div>
 </ion-content>
